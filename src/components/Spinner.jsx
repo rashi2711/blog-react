@@ -3,9 +3,9 @@ import "./Spinner.css";
 
 const Spinner = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center h-screen">
       <div className='spinner'></div>
-      <p>Loading.....</p>
+      <p className="mt-2">Loading.....</p>
     </div>
   );
 }

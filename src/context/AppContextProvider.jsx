@@ -15,19 +15,22 @@ export default function AppContextProvider({ children }) {
     try {
       const result = await fetch(url);
       const data = await result.json();
-      console.log(data);
-      setPages(data.pages);
-      setTotalpages(data.totalPages);
+      console.log("Fetched Data:", data); 
+      
+      setPages(data.page); 
+      setTotalpages(data.totalPages); 
       setPosts(data.posts);
+  
+      console.log("Current Page:", data.page, "Total Pages:", data.totalPages);
     } catch (error) {
       console.log("Error in fetching data:", error);
       setPages(1);
-      setTotalpages(null);
+      setTotalpages(1);
       setPosts([]);
     }
     setLoading(false);
   }
-
+  
   function handlePageChange(page) {
     setPages(page);
     fetchBlogPosts(page);
